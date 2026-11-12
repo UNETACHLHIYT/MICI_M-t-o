@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block titre %}MICI-Météo{% endblock %}
+
+{% block contenu %}
+
+
+
+  {% for block in page.body %}
+
+    {% if block.block_type == "presentation" %}
+
+      <section class="presentation">
+        <div class="presentation-texte">
+          {% if block.value.title %}
+            <h1 class="presentation-titre">{{ block.value.title }}</h1>
+          {% endif %}
+          <div class="presentation-contenu">
+            {{ block.value.text|richtext }}
+          </div>
+        </div>
+
+        <div class="presentation-media">
+          {% image block.value.image width-1000 format-webp as img %}
+          <img class="presentation-image"
+               src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}"
+               alt="{{ block.value.alt_text }}" loading="lazy">
+        </div>
+      </section>
+          {% elif block.block_type == "phases" %}
+
+      <section class="phases" aria-labelledby="phases-titre">
+        <h2 id="phases-titre" class="phases__titre">{{ block.value.title }}</h2>
+        {% if block.value.intro %}
+          <p class="phases__intro">{{ block.value.intro }}</p>
+        {% endif %}
+
+        <div class="phases__grille">
+          {% for card in block.value.cards %}
+            <article class="carte carte--{{ card.phase }}">
+
+              <div class="carte__haut">
+                {% image card.image width-300  format-webp as icone %}
+                <img class="carte__icone" src="{{ icone.url }}"
+                     width="{{ icone.width }}" height="{{ icone.height }}" alt="">
+                <span class="carte__badge">{{ card.badge }}</span>
+              </div>
+
+              <div class="carte__bas">
+                <h3 class="carte__titre">{{ card.title }}</h3>
+                <p class="carte__texte">{{ card.text }}</p>
+                <a class="carte__lien" href="{% if card.page %}{% pageurl card.page %}{% else %}#{% endif %}">
+                  {{ card.link_text }} <span aria-hidden="true">→</span>
+                </a>
+              </div>
+
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% elif block.block_type == "liens" %}
+
+      <section class="liens" aria-labelledby="liens-titre">
+        <h2 id="liens-titre" class="liens__titre">{{ block.value.title }}</h2>
+
+        <div class="liens__grille">
+          {% for lien in block.value.links %}
+            <article class="lien-carte">
+              <h3 class="lien-carte__titre">{{ lien.title }}</h3>
+
+              {% if lien.text %}
+                <p class="lien-carte__texte">{{ lien.text }}</p>
+              {% endif %}
+
+              <a class="lien-carte__lien" href="{% if lien.page %}{% pageurl lien.page %}{% else %}#{% endif %}">
+                {{ lien.link_text }} <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+
+
+    {% endif %}
+
+  {% endfor %}
+
+{% endblock %}

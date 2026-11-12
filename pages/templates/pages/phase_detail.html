@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block titre %}{{ page.title }} – MICI Météo{% endblock %}
+ <!-- On accroche le CSS -->
+  <link rel="stylesheet" href="{% static 'css/mysite.css' %}?v=4">
+</head>
+{% block contenu %}
+<article class="phase-detail phase-detail--{{ page.phase }}">
+
+  {# Le grand cadre du haut : étiquette, icône, titre, phrase #}
+  <header class="phase-detail__entete">
+    {% if page.etiquette %}
+      <span class="phase-detail__etiquette">{{ page.etiquette }}</span>
+    {% endif %}
+
+    <div class="phase-detail__ligne">
+      {% if page.icone %}
+        {% image page.icone fill-144x144 format-webp class="phase-detail__icone" alt="" %}
+      {% endif %}
+      <h1 class="phase-detail__titre">{{ page.title }}</h1>
+    </div>
+
+    {% if page.introduction %}
+      <p class="phase-detail__intro">{{ page.introduction }}</p>
+    {% endif %}
+  </header>
+
+  {# L'encadré d'alerte : il n'apparaît QUE s'il est rempli (pour Tempête) #}
+  {% if page.alerte_titre %}
+    <aside class="phase-alerte" role="note">
+      <p class="phase-alerte__titre">{{ page.alerte_titre }}</p>
+      {% if page.alerte_sous_titre %}
+        <p class="phase-alerte__sous-titre">{{ page.alerte_sous_titre }}</p>
+      {% endif %}
+      {% if page.alerte_texte %}
+        <p class="phase-alerte__texte">{{ page.alerte_texte }}</p>
+      {% endif %}
+    </aside>
+  {% endif %}
+
+  {# Les conseils au quotidien, 2 par ligne #}
+  {% if page.conseils %}
+    <section class="conseils" aria-labelledby="conseils-titre">
+      <h2 id="conseils-titre" class="conseils__titre">{{ page.conseils_titre }}</h2>
+
+      <div class="conseils__grille">
+        {% for bloc in page.conseils %}
+          <div class="conseil">
+            <h3 class="conseil__titre">{{ bloc.value.titre }}</h3>
+            <p class="conseil__texte">{{ bloc.value.texte }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {# Les 2 boutons du bas #}
+  <nav class="phases-navigation" aria-label="Pages voisines">
+    {% if page.page_precedente %}
+      <a class="bouton-nav" href="{% pageurl page.page_precedente %}">
+        <span aria-hidden="true">←</span> {{ page.page_precedente.title }}
+      </a>
+    {% endif %}
+
+    {% if page.page_suivante %}
+      <a class="bouton-nav bouton-nav--suivant" href="{% pageurl page.page_suivante %}">
+        {{ page.page_suivante.title }} <span aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  </nav>
+
+</article>
+{% endblock %}

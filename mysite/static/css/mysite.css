@@ -1,0 +1,1505 @@
+/* =====================================================
+   1. LA BOÎTE À CRAYONS (les couleurs)
+   ===================================================== */
+:root {
+  --bleu-fonce: #14213d;
+  --bleu-nuit: #0e1830;
+  --bleu: #05659a;
+  --marine: #0f2a5c;
+  --ciel: #eef6fd;
+  --jaune: #f5b700;
+  --rouge-clair: #ff8a80;
+  --texte: #1f2937;
+  --texte-clair: #e2e8f0;
+  --gris-bleu: #cbd5e1;
+  --gris-discret: #94a3b8;
+  --gris-doux: #475569;
+  --blanc: #ffffff;
+}
+
+
+/* =====================================================
+   2. LA FEUILLE DE PAPIER (toute la page)
+   ===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--texte);
+  background: var(--blanc);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--jaune);
+  outline-offset: 3px;
+}
+
+.conteneur {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+/* =====================================================
+   3. LE HAUT DE LA PAGE (le header)
+   ===================================================== */
+.entete {
+  background: var(--bleu-fonce);
+  color: var(--texte-clair);
+}
+
+.barre-urgence {
+  background: var(--bleu-nuit);
+  padding: 8px 0;
+}
+
+.urgence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 28px;
+  margin: 0;
+  color: var(--rouge-clair);
+  font-size: 0.9rem;
+}
+
+.urgence strong {
+  font-weight: 800;
+}
+
+.urgence a:hover {
+  text-decoration: underline;
+}
+
+.barre-principale {
+  padding: 14px 0;
+}
+
+.barre-principale .conteneur {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.marque {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.marque-logo {
+  display: block;
+  height: 72px;
+  width: auto;
+  background: var(--blanc);
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.marque-texte {
+  max-width: 210px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--gris-bleu);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.menu {
+  display: flex;
+  gap: 28px;
+}
+
+.menu a {
+  color: var(--blanc);
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 6px 0;
+  border-bottom: 3px solid transparent;
+}
+
+.menu a:hover {
+  color: var(--jaune);
+  border-bottom-color: var(--jaune);
+}
+
+.menu a[aria-current="page"] {
+  border-bottom-color: var(--jaune);
+}
+
+
+/* =====================================================
+   4. LE MILIEU DE LA PAGE
+   ===================================================== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 50vh;
+}
+
+
+/* =====================================================
+   5. LE BAS DE LA PAGE (le footer)
+   ===================================================== */
+.pied {
+  background: var(--bleu-fonce);
+  color: var(--gris-bleu);
+}
+
+.pied-haut {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 48px;
+  padding-bottom: 40px;
+}
+
+.pied-logo {
+  display: block;
+  height: 80px;
+  width: auto;
+  background: var(--blanc);
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.avertissement {
+  max-width: 520px;
+  margin: 20px 0 0;
+  font-size: 0.95rem;
+}
+
+.avertissement strong {
+  color: var(--jaune);
+}
+
+.pied-liens {
+  display: flex;
+  gap: 64px;
+}
+
+.pied-liens ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pied-liens li {
+  margin-bottom: 14px;
+}
+
+.pied-liens a {
+  color: var(--texte-clair);
+}
+
+.pied-liens a:hover {
+  color: var(--jaune);
+  text-decoration: underline;
+}
+
+.pied-bas {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pied-bas p {
+  margin: 0;
+  padding: 20px 0;
+  color: var(--gris-discret);
+  font-size: 0.9rem;
+}
+
+
+/* =====================================================
+   6. LE BLOC PRÉSENTATION (fond bleu clair)
+   ===================================================== */
+.presentation {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin: 0;
+  padding: 56px 0 32px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+.presentation-texte,
+.presentation-media {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.presentation-titre {
+  margin: 0 0 16px;
+  color: var(--marine);
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+.presentation-contenu p {
+  margin: 0 0 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.presentation-contenu a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+
+.presentation-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+
+/* =====================================================
+   7. LE BLOC PHASES MÉTÉO (même fond bleu clair)
+   ===================================================== */
+.phases {
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+  padding: 32px 0 64px;
+}
+
+.phases__titre {
+  max-width: 26ch;
+  margin: 0 auto 16px;
+  text-align: center;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.phases__intro {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--gris-doux);
+}
+
+.phases__grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.carte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--blanc);
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(15, 42, 92, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 42, 92, 0.14);
+}
+
+.carte:focus-within {
+  outline: 3px solid var(--jaune);
+  outline-offset: 4px;
+}
+
+.carte__haut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 8px;
+  background: linear-gradient(to bottom, var(--teinte), var(--blanc));
+}
+
+.carte__icone {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(15, 42, 92, 0.12));
+}
+
+.carte__badge {
+  position: relative;
+  margin-top: -22px;
+  padding: 6px 22px;
+  border-radius: 999px;
+  background: var(--badge-fond);
+  color: var(--marine);
+  font-size: 1.05rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(15, 42, 92, 0.10);
+}
+
+.carte__bas {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 28px 30px;
+}
+
+.carte__titre {
+  margin: 8px 0;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.carte__texte {
+  margin: 0 0 24px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--gris-doux);
+}
+
+.carte__lien {
+  margin-top: auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1565c0;
+}
+
+.carte__lien::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.carte:hover .carte__lien {
+  text-decoration: underline;
+}
+
+.carte--soleil {
+  --teinte: #fff6e0;
+  --badge-fond: #fde4b0;
+  border: 2px solid #f6d48c;
+}
+
+.carte--nuages {
+  --teinte: #eaf5ff;
+  --badge-fond: #cfe7fb;
+  border: 2px dashed #8fc8f0;
+}
+
+.carte--tempete {
+  --teinte: #fdeeee;
+  --badge-fond: #f8c9c9;
+  border: 3px solid #c62828;
+}
+
+
+/* =====================================================
+   8. LES ÉCRANS MOYENS (tablette, petit ordinateur)
+   ===================================================== */
+@media (max-width: 1000px) {
+  .barre-principale .conteneur {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+  }
+
+  .pied-haut {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .phases__grille {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* =====================================================
+   9. LES TÉLÉPHONES
+   ===================================================== */
+@media (max-width: 800px) {
+  .presentation {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 40px 0 24px;
+  }
+
+  .presentation-titre {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .urgence {
+    justify-content: center;
+    gap: 4px 16px;
+    font-size: 0.85rem;
+  }
+
+  .marque {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .marque-logo {
+    height: 64px;
+  }
+
+  .marque-texte {
+    max-width: none;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .pied-haut {
+    align-items: center;
+    text-align: center;
+  }
+
+  .pied-liens {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .phases {
+    padding: 24px 0 48px;
+  }
+
+  .carte__icone {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carte,
+  .carte:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =====================================================
+   10. LE BLOC LIENS RAPIDES (3 cartes simples)
+   ===================================================== */
+.liens {
+  padding: 56px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+.liens__titre {
+  margin: 0 0 32px;
+  text-align: center;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.liens__grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Une carte */
+.lien-carte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.lien-carte:hover {
+  transform: translateY(-3px);
+  border-color: #9cc3ea;
+  box-shadow: 0 10px 24px rgba(15, 42, 92, 0.12);
+}
+
+.lien-carte:focus-within {
+  outline: 3px solid var(--jaune);
+  outline-offset: 4px;
+}
+
+.lien-carte__titre {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--marine);
+}
+
+.lien-carte__texte {
+  margin: 0 0 20px;
+  color: var(--gris-doux);
+  line-height: 1.6;
+}
+
+.lien-carte__lien {
+  margin-top: auto;            /* le lien reste en bas de la carte */
+  font-weight: 700;
+  color: #1565c0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* toute la carte est cliquable */
+.lien-carte__lien::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* tablette et téléphone : les cartes s'empilent */
+@media (max-width: 1000px) {
+  .liens__grille {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .liens {
+    padding: 40px 0 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lien-carte,
+  .lien-carte:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =====================================================
+   11. LA PAGE « COMPRENDRE LES MICI »
+   ===================================================== */
+.page-mici {
+  padding: 48px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+.mici-titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.mici-intro {
+  max-width: 760px;
+  margin: 0 0 40px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+/* Les 2 cartes maladies, côte à côte */
+.mici-maladies {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.mici-maladie {
+  padding: 28px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.mici-maladie__titre {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  color: var(--marine);
+}
+
+.mici-maladie__texte {
+  margin: 0;
+  color: var(--gris-doux);
+  line-height: 1.6;
+}
+
+/* Les 2 colonnes de texte */
+.mici-colonnes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.mici-colonne__titre {
+  margin: 0 0 12px;
+  padding-top: 16px;
+  border-top: 4px solid var(--jaune);
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--marine);
+}
+
+.mici-colonne__texte p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+}
+
+.mici-colonne__texte a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+
+/* Le grand encadré « Rémission et poussée » */
+.mici-remission {
+  padding: 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+}
+
+.mici-remission__titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--marine);
+}
+
+.mici-remission__texte p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+}
+
+/* Téléphone : tout passe en une seule colonne */
+@media (max-width: 800px) {
+  .mici-maladies,
+  .mici-colonnes {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   12. LA PAGE « LES PHASES MÉTÉO »
+   ===================================================== */
+.page-phases {
+  padding: 24px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+/* Le petit chemin en haut */
+.fil-ariane {
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: var(--gris-doux);
+}
+
+.fil-ariane a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+
+/* Le grand cadre du haut */
+.phases-entete {
+  margin-bottom: 40px;
+  padding: 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.phases-etiquette {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #cfe7fb;
+  color: var(--marine);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.phases-entete__ligne {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0 12px;
+}
+
+.phases-entete__icone {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.phases-entete__titre {
+  margin: 0;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.phases-entete__intro {
+  max-width: 760px;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--gris-doux);
+}
+
+/* « Choisir sa phase » */
+.phases-choix__titre {
+  margin: 0;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--marine);
+}
+
+.phases-choix .phases__grille {
+  margin-top: 24px;
+}
+
+/* Les 2 boutons du bas */
+.phases-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.bouton-nav {
+  display: inline-block;
+  padding: 12px 22px;
+  background: var(--blanc);
+  border: 2px solid var(--marine);
+  border-radius: 999px;
+  color: var(--marine);
+  font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bouton-nav:hover {
+  background: var(--marine);
+  color: var(--blanc);
+}
+
+/* le bouton « suivant » reste à droite, même tout seul */
+.bouton-nav--suivant {
+  margin-left: auto;
+}
+
+/* Téléphone */
+@media (max-width: 640px) {
+  .phases-entete {
+    padding: 24px;
+  }
+
+  .phases-entete__icone {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+
+/* =====================================================
+   13. LA PAGE D'UNE PHASE (Soleil, Nuages, Tempête)
+   Une seule page pour les 3 : la couleur change toute
+   seule selon la phase choisie dans l'admin.
+   ===================================================== */
+.phase-detail {
+  padding: 40px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+/* Les couleurs de chaque phase (les mêmes que les cartes de l'accueil) */
+.phase-detail--soleil {
+  --teinte: #fff6e0;
+  --accent: #f6d48c;
+  --accent-fond: #fde4b0;
+}
+
+.phase-detail--nuages {
+  --teinte: #eaf5ff;
+  --accent: #8fc8f0;
+  --accent-fond: #cfe7fb;
+}
+
+.phase-detail--tempete {
+  --teinte: #fdeeee;
+  --accent: #c62828;
+  --accent-fond: #f8c9c9;
+}
+
+/* Le grand cadre du haut */
+.phase-detail__entete {
+  margin-bottom: 32px;
+  padding: 32px;
+  background: linear-gradient(to bottom, var(--teinte), var(--blanc));
+  border: 2px solid var(--accent);
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.phase-detail__etiquette {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--accent-fond);
+  color: var(--marine);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.phase-detail__ligne {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0 12px;
+}
+
+.phase-detail__icone {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.phase-detail__titre {
+  margin: 0;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.phase-detail__intro {
+  max-width: 760px;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--gris-doux);
+}
+
+/* L'encadré d'alerte (il ne s'affiche que s'il est rempli : pour Tempête) */
+.phase-alerte {
+  margin-bottom: 32px;
+  padding: 24px 28px;
+  background: var(--blanc);
+  border: 1px solid #f3c4c4;
+  border-left: 6px solid #c62828;
+  border-radius: 16px;
+}
+
+.phase-alerte__titre {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #8e1b1b;
+}
+
+.phase-alerte__sous-titre {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: var(--marine);
+}
+
+.phase-alerte__texte {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--gris-doux);
+}
+
+/* Les conseils au quotidien */
+.conseils__titre {
+  margin: 0 0 20px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--marine);
+}
+
+.conseils__grille {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.conseil {
+  padding: 24px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-top: 4px solid var(--accent);
+  border-radius: 16px;
+}
+
+.conseil__titre {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: var(--marine);
+}
+
+.conseil__texte {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--gris-doux);
+}
+
+/* Téléphone : tout passe en une seule colonne */
+@media (max-width: 800px) {
+  .conseils__grille {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .phase-detail__entete {
+    padding: 24px;
+  }
+
+  .phase-detail__icone {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+
+/* =====================================================
+   14. LA PAGE « RESSOURCES UTILES »
+   ===================================================== */
+.page-ressources {
+  padding: 40px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+/* Le cadre du haut */
+.ressources-entete {
+  margin-bottom: 32px;
+  padding: 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.ressources-titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.ressources-intro {
+  max-width: 760px;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--gris-doux);
+}
+
+/* La liste */
+.ressources-liste {
+  display: grid;
+  gap: 20px;
+}
+
+/* Une carte : image à gauche, texte au milieu, bouton à droite */
+.ressource {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 20px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ressource:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 42, 92, 0.12);
+}
+
+.ressource__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  padding: 12px;
+  background: #f6f9fc;
+  border-radius: 12px;
+}
+
+.ressource__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.ressource__nom {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+  color: var(--marine);
+}
+
+.ressource__description {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--gris-doux);
+}
+
+/* Le bouton à droite */
+.ressource__lien {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid var(--marine);
+  border-radius: 999px;
+  color: var(--marine);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ressource__lien:hover {
+  background: var(--marine);
+  color: var(--blanc);
+}
+
+/* Texte lu seulement par les lecteurs d'écran */
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Téléphone : tout s'empile */
+@media (max-width: 700px) {
+  .ressource {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ressource__lien {
+    justify-self: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ressource,
+  .ressource:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =====================================================
+   15. LA PAGE « CONTACT » (formulaire + message merci)
+   ===================================================== */
+.page-contact {
+  padding: 40px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+/* Le cadre du haut */
+.contact-entete {
+  margin-bottom: 24px;
+  padding: 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.contact-titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.contact-intro {
+  max-width: 760px;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--gris-doux);
+}
+
+/* L'avertissement « pas d'information médicale » */
+.contact-avertissement {
+  margin-bottom: 32px;
+  padding: 20px 24px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-left: 6px solid var(--marine);
+  border-radius: 16px;
+}
+
+.contact-avertissement__titre {
+  margin: 0 0 4px;
+  font-weight: 800;
+  color: var(--marine);
+}
+
+.contact-avertissement__texte {
+  margin: 0;
+  color: var(--gris-doux);
+}
+
+/* Formulaire à gauche, urgence à droite */
+.contact-grille {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.contact-formulaire {
+  padding: 28px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+/* Un champ : le titre, la petite aide, puis la case */
+.champ {
+  margin-bottom: 22px;
+}
+
+.champ__label {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 700;
+  color: var(--marine);
+}
+
+.champ__aide {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--gris-doux);
+}
+
+.champ input,
+.champ select,
+.champ textarea {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--texte);
+  background: var(--blanc);
+  border: 1px solid #b8c6d9;
+  border-radius: 10px;
+}
+
+.champ textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.champ input[type="checkbox"],
+.champ input[type="radio"] {
+  display: inline-block;
+  width: auto;
+}
+
+.champ input:focus,
+.champ select:focus,
+.champ textarea:focus {
+  outline: 3px solid var(--jaune);
+  outline-offset: 2px;
+  border-color: var(--bleu);
+}
+
+.champ__erreur {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #b3261e;
+}
+
+/* Le bouton Envoyer */
+.contact-bouton {
+  padding: 12px 32px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--blanc);
+  background: var(--marine);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.contact-bouton:hover {
+  background: var(--bleu);
+}
+
+/* L'encadré « Une urgence ? » (rouge doux, comme Tempête) */
+.contact-urgence {
+  position: sticky;
+  top: 24px;
+  padding: 28px;
+  background: #fdeeee;
+  border: 1px solid #f3c4c4;
+  border-left: 6px solid #c62828;
+  border-radius: 16px;
+}
+
+.contact-urgence__titre {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #8e1b1b;
+}
+
+.contact-urgence__texte {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--marine);
+}
+
+/* Le message « Merci » après l'envoi */
+.contact-merci {
+  padding: 40px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.contact-merci__icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1e7a3c;
+  background: #e3f4e8;
+  border: 2px solid #9fd3ae;
+  border-radius: 50%;
+}
+
+.contact-merci__titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--marine);
+}
+
+.contact-merci__texte {
+  max-width: 640px;
+  margin: 0 0 24px;
+  line-height: 1.7;
+  color: var(--gris-doux);
+}
+
+/* Téléphone : tout s'empile, et l'urgence passe en premier */
+@media (max-width: 800px) {
+  .contact-grille {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-urgence {
+    position: static;
+    order: -1;
+  }
+}
+
+
+/* =====================================================
+   16. LA PAGE « MENTIONS LÉGALES ET CONFIDENTIALITÉ »
+   ===================================================== */
+.page-legal {
+  padding: 40px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+.legal-entete {
+  margin-bottom: 24px;
+  padding: 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+}
+
+.legal-titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  color: var(--marine);
+}
+
+.legal-sommaire a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+
+
+.legal-section {
+  margin-top: 24px;
+  padding: 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  scroll-margin-top: 24px;
+}
+
+.legal-section__titre {
+  margin: 0 0 16px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--marine);
+}
+
+.legal-section__texte p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+}
+
+.legal-section__texte a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+/* =====================================================
+   PAGE « MENTIONS LÉGALES ET CONFIDENTIALITÉ »
+   ===================================================== */
+.page-mentions {
+  padding: 48px 0 64px;
+  background: var(--ciel);
+  box-shadow: 0 0 0 100vmax var(--ciel);
+  clip-path: inset(0 -100vmax);
+}
+
+.mentions-titre {
+  margin: 0 0 12px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.mentions-intro {
+  max-width: 760px;
+  margin: 0 0 40px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+/* Une rubrique = une carte blanche */
+.mentions-section {
+  max-width: 860px;
+  margin: 0 0 24px;
+  padding: 28px 32px;
+  background: var(--blanc);
+  border: 1px solid #dbe4f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(15, 42, 92, 0.06);
+}
+
+.mentions-section__titre {
+  margin: 0 0 12px;
+  padding-top: 12px;
+  border-top: 4px solid var(--jaune);
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--marine);
+}
+
+.mentions-section__texte p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+}
+
+.mentions-section__texte ul,
+.mentions-section__texte ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+  line-height: 1.7;
+}
+
+.mentions-section__texte a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+
+/* Téléphone : on réduit un peu les marges */
+@media (max-width: 800px) {
+  .mentions-section {
+    padding: 20px;
+  }
+}

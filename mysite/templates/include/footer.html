@@ -1,0 +1,44 @@
+{% load static urgences %}
+<footer class="pied">
+
+  <!--  ÉTAGE 1 : le logo + l'avertissement à gauche, les liens à droite  -->
+  <div class="conteneur pied-haut">
+
+    <!-- À gauche : le logo et le message important -->
+    <div class="pied-marque">
+      <a href="/">
+        <img class="pied-logo" src="{% static 'css/images/log.png' %}" alt="MICI Météo - accueil">
+      </a>
+
+      <p class="avertissement">
+        <strong>Avertissement.</strong>
+        Site d'information : il ne remplace pas un avis médical.<br>
+        En cas d'urgence, appelez
+        {% numeros_urgence as numeros %}
+        {% for n in numeros %}{% if forloop.last and not forloop.first %} ou {% elif not forloop.first %}, {% endif %}le <strong>{{ n.numero }}</strong>{% if n.sms %} (SMS){% endif %}{% endfor %}.
+      </p>
+    </div>
+
+    <!-- À droite : les liens du site, et la ligne Mentions légales · Confidentialité -->
+    <nav class="pied-liens" aria-label="Liens du bas de page">
+      <ul>
+        <li><a href="/comprendre-les-mici/">Comprendre les MICI</a></li>
+        <li><a href="/les-phases-meteo/">Les phases météo</a></li>
+        <li><a href="/ressources-utiles/">Ressources utiles</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+          <p class="pied-legal">
+        <a href="/mentions-legales/">Mentions légales et Confidentialité</a>
+      </p>
+    </nav>
+
+  </div>
+
+  <!-- ÉTAGE 2 : la petite ligne tout en bas  -->
+  <div class="pied-bas">
+    <div class="conteneur">
+      <p>© MICI MÉTÉO · mici-meteo.fr · Information et repères pour vivre avec une MICI</p>
+    </div>
+  </div>
+
+</footer>

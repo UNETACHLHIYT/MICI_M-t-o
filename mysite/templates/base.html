@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titre %}MICI-Météo{% endblock %}</title>
+  {% if page.search_description %}
+  <meta name="description" content="{{ page.search_description }}">
+{% endif %}
+
+  <!-- On accroche le CSS -->
+  <link rel="stylesheet" href="{% static 'css/mysite.css' %}?v=6">
+</head>
+
+<body>
+
+  <!-- Le header apparaît sur TOUTES les pages -->
+  {% include "include/header.html" %}
+
+  <!-- Le milieu change à chaque page -->
+  <main>
+    {% block contenu %}
+    {% endblock %}
+  </main>
+
+  <!-- Le footer apparaît sur TOUTES les pages -->
+  {% include "include/footer.html" %}
+
+</body>
+</html>

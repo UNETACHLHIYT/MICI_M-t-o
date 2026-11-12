@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block titre %}{{ page.title }} – MICI Météo{% endblock %}
+
+{% block contenu %}
+<article class="page-phases">
+
+  
+  {# Le grand cadre du haut #}
+  <header class="phases-entete">
+    {% if page.etiquette %}
+      <span class="phases-etiquette">{{ page.etiquette }}</span>
+    {% endif %}
+
+    <div class="phases-entete__ligne">
+      {% if page.icone %}
+        {% image page.icone fill-128x128 format-webp class="phases-entete__icone" alt="" %}
+      {% endif %}
+      <h1 class="phases-entete__titre">{{ page.title }}</h1>
+    </div>
+
+    {% if page.introduction %}
+      <p class="phases-entete__intro">{{ page.introduction }}</p>
+    {% endif %}
+  </header>
+
+  {# Les 3 cartes : mêmes cartes que sur l'accueil #}
+  <section class="phases-choix" aria-labelledby="choix-titre">
+    <h2 id="choix-titre" class="phases-choix__titre">{{ page.titre_cartes }}</h2>
+
+    <div class="phases__grille">
+      {% for bloc in page.cartes %}
+        {% with card=bloc.value %}
+          <article class="carte carte--{{ card.phase }}">
+
+            <div class="carte__haut">
+              {% image card.image width-300 format-webp as icone %}
+              <img class="carte__icone" src="{{ icone.url }}"
+                   width="{{ icone.width }}" height="{{ icone.height }}" alt="">
+              <span class="carte__badge">{{ card.badge }}</span>
+            </div>
+
+            <div class="carte__bas">
+              <h3 class="carte__titre">{{ card.title }}</h3>
+              <p class="carte__texte">{{ card.text }}</p>
+              <a class="carte__lien" href="{% if card.page %}{% pageurl card.page %}{% else %}#{% endif %}">
+                {{ card.link_text }} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+          </article>
+        {% endwith %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {# Les 2 boutons du bas #}
+  <nav class="phases-navigation" aria-label="Pages voisines">
+    {% if page.page_precedente %}
+      <a class="bouton-nav" href="{% pageurl page.page_precedente %}">
+        <span aria-hidden="true">←</span> {{ page.page_precedente.title }}
+      </a>
+    {% endif %}
+
+    {% if page.page_suivante %}
+      <a class="bouton-nav bouton-nav--suivant" href="{% pageurl page.page_suivante %}">
+        {{ page.page_suivante.title }} <span aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  </nav>
+
+</article>
+{% endblock %}

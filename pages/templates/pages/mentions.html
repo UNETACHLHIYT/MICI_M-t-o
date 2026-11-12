@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block titre %}{{ page.title }} – MICI Météo{% endblock %}
+
+{% block contenu %}
+<article class="page-mentions">
+
+  <header class="mentions-entete">
+    <h1 class="mentions-titre">{{ page.title }}</h1>
+    {% if page.introduction %}
+      <p class="mentions-intro">{{ page.introduction }}</p>
+    {% endif %}
+  </header>
+
+  {% for bloc in page.sections %}
+    <section class="mentions-section">
+      <h2 class="mentions-section__titre">{{ bloc.value.titre }}</h2>
+      <div class="mentions-section__texte">
+        {{ bloc.value.texte|richtext }}
+      </div>
+    </section>
+  {% endfor %}
+
+</article>
+{% endblock %}

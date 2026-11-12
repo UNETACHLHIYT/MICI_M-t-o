@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block titre %}{{ page.title }} – MICI Météo{% endblock %}
+
+{% block contenu %}
+<article class="page-ressources">
+
+  {# Le cadre du haut : titre et phrase #}
+  <header class="ressources-entete">
+    <h1 class="ressources-titre">{{ page.title }}</h1>
+    {% if page.introduction %}
+      <p class="ressources-intro">{{ page.introduction }}</p>
+    {% endif %}
+  </header>
+
+  {# La liste des ressources, une carte par ligne #}
+  <div class="ressources-liste">
+    {% for bloc in page.ressources %}
+      {% with r=bloc.value %}
+        <article class="ressource">
+
+          <div class="ressource__media">
+            {% if r.image %}
+              {% image r.image max-400x260 format-webp class="ressource__image" alt="" %}
+            {% endif %}
+          </div>
+
+          <div class="ressource__texte">
+            <h2 class="ressource__nom">{{ r.nom }}</h2>
+            {% if r.description %}
+              <p class="ressource__description">{{ r.description }}</p>
+            {% endif %}
+          </div>
+
+          <a class="ressource__lien" href="{{ r.url }}" target="_blank" rel="noopener">
+            {{ r.texte_lien }} <span aria-hidden="true">↗</span>
+            <span class="visuellement-cache">(s'ouvre dans un nouvel onglet)</span>
+          </a>
+
+        </article>
+      {% endwith %}
+    {% endfor %}
+  </div>
+
+</article>
+{% endblock %}

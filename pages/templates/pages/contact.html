@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags urgences %}
+
+{% block titre %}{{ page.title }} – MICI Météo{% endblock %}
+
+{% block contenu %}
+<article class="page-contact">
+
+{% if form %}
+  {# ===== AVANT l'envoi : le formulaire ===== #}
+
+  <header class="contact-entete">
+    <h1 class="contact-titre">{{ page.title }}</h1>
+    {% if page.introduction %}
+      <p class="contact-intro">{{ page.introduction }}</p>
+    {% endif %}
+  </header>
+
+  <aside class="contact-avertissement" role="note">
+    <p class="contact-avertissement__titre">{{ page.avertissement_titre }}</p>
+    {% if page.avertissement_texte %}
+      <p class="contact-avertissement__texte">{{ page.avertissement_texte }}</p>
+    {% endif %}
+  </aside>
+
+  <div class="contact-grille">
+
+    <form class="contact-formulaire" action="{% pageurl page %}" method="post">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <p class="champ__erreur">{{ form.non_field_errors|join:" " }}</p>
+      {% endif %}
+
+      {% for field in form %}
+        <div class="champ">
+          <label class="champ__label" for="{{ field.id_for_label }}">
+            {{ field.label }}{% if field.field.required %} <span aria-hidden="true">*</span>{% endif %}
+          </label>
+          {% if field.help_text %}
+            <p class="champ__aide">{{ field.help_text }}</p>
+          {% endif %}
+          {{ field }}
+          {% if field.errors %}
+            <p class="champ__erreur">{{ field.errors|join:" " }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="contact-bouton">{{ page.bouton_envoyer }}</button>
+    </form>
+
+    {# L'encadré urgence : les numéros viennent du même snippet que le header #}
+    <aside class="contact-urgence">
+      <p class="contact-urgence__titre">Une urgence ?</p>
+      <p class="contact-urgence__texte">
+        Ce formulaire n'est pas lu en temps réel. En cas d'urgence, appelez
+        {% numeros_urgence as numeros %}
+        {% for n in numeros %}{% if forloop.last and not forloop.first %} ou {% elif not forloop.first %}, {% endif %}le <strong>{{ n.numero }}</strong>{% if n.sms %} (SMS){% endif %}{% endfor %}.
+      </p>
+    </aside>
+
+  </div>
+
+{% else %}
+  {# ===== APRÈS l'envoi : le message « Merci » ===== #}
+
+  <section class="contact-merci">
+    <div class="contact-merci__icone" aria-hidden="true">✓</div>
+    <h1 class="contact-merci__titre">{{ page.merci_titre }}</h1>
+    {% if page.merci_texte %}
+      <p class="contact-merci__texte">{{ page.merci_texte }}</p>
+    {% endif %}
+    <a class="bouton-nav" href="/">Retour à l'accueil</a>
+  </section>
+
+{% endif %}
+
+</article>
+{% endblock %}

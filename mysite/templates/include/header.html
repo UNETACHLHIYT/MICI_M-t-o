@@ -1,0 +1,41 @@
+{% load static urgences %}
+<header class="entete">
+
+  <!--  ÉTAGE 1 : la barre des urgences (les numéros viennent de l'admin, menu Snippets)  -->
+  <div class="barre-urgence">
+    <div class="conteneur">
+      <p class="urgence">
+        <strong>Urgence médicale</strong>
+        {% numeros_urgence as numeros %}
+        {% for n in numeros %}
+          <a href="{% if n.sms %}sms{% else %}tel{% endif %}:{{ n.numero }}"><strong>{{ n.numero }}</strong> {{ n.nom }}</a>
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+
+  <!--  ÉTAGE 2 : la barre bleue avec le logo et le menu  -->
+  <div class="barre-principale">
+    <div class="conteneur">
+
+      <!-- À gauche : le logo et la définition, cliquables pour revenir à l'accueil -->
+      <a class="marque" href="/">
+        <img class="marque-logo" src="{% static 'css/images/log.png' %}" alt="MICI Météo - accueil">
+        <span class="marque-texte">
+          MICI : Maladies Inflammatoires Chroniques Intestinales
+        </span>
+      </a>
+
+      <!-- À droite : le menu. La page où on est est soulignée en doré. -->
+      <nav class="menu" aria-label="Menu principal">
+        <a href="/" {% if request.path == "/" %}aria-current="page"{% endif %}>Accueil</a>
+        <a href="/comprendre-les-mici/" {% if request.path == "/comprendre-les-mici/" %}aria-current="page"{% endif %}>Comprendre les MICI</a>
+       <a href="/les-phases-meteo/" {% if request.path == "/les-phases-meteo/" %}aria-current="page"{% endif %}>Les phases météo</a>
+        <a href="/ressources-utiles/" {% if request.path == "/ressources-utiles/" %}aria-current="page"{% endif %}>Ressources utiles</a>
+        <a href="/contact/" {% if request.path == "/contact/" %}aria-current="page"{% endif %}>Contact</a>
+      </nav>
+
+    </div>
+  </div>
+
+</header>

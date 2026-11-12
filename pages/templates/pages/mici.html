@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block titre %}{{ page.title }} – MICI Météo{% endblock %}
+
+{% block contenu %}
+<article class="page-mici">
+
+  <header class="mici-entete">
+    <h1 class="mici-titre">{{ page.title }}</h1>
+    {% if page.introduction %}
+      <p class="mici-intro">{{ page.introduction }}</p>
+    {% endif %}
+  </header>
+
+  <section class="mici-maladies">
+    {% for bloc in page.maladies %}
+      <div class="mici-maladie">
+        <h2 class="mici-maladie__titre">{{ bloc.value.titre }}</h2>
+        <p class="mici-maladie__texte">{{ bloc.value.texte }}</p>
+      </div>
+    {% endfor %}
+  </section>
+
+  <section class="mici-colonnes">
+    {% for bloc in page.colonnes %}
+      <div class="mici-colonne">
+        <h2 class="mici-colonne__titre">{{ bloc.value.titre }}</h2>
+        <div class="mici-colonne__texte">
+          {{ bloc.value.texte|richtext }}
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  {% if page.remission %}
+    <section class="mici-remission">
+      <h2 class="mici-remission__titre">Rémission et poussée</h2>
+      <div class="mici-remission__texte">
+        {{ page.remission|richtext }}
+      </div>
+    </section>
+  {% endif %}
+
+</article>
+{% endblock %}
