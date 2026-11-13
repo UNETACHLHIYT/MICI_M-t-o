@@ -1503,3 +1503,104 @@ main {
     padding: 20px;
   }
 }
+
+
+/* =====================================================
+   17. LE FOOTER « PRO » (4 colonnes + bande d'avertissement)
+   ===================================================== */
+.pied-grille {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+
+.pied-marque {
+  display: inline-block;
+}
+
+.pied-slogan {
+  max-width: 280px;
+  margin: 16px 0 0;
+  line-height: 1.6;
+  color: var(--gris-bleu);
+}
+
+/* Les titres de colonnes */
+.pied-titre {
+  margin: 0 0 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blanc);
+
+}
+
+.pied-liste,
+.pied-urgences {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pied-liste li,
+.pied-urgences li {
+  margin-bottom: 12px;
+}
+
+.pied-liste a {
+  color: var(--gris-bleu);
+}
+
+.pied-liste a:hover {
+  color: var(--jaune);
+  text-decoration: underline;
+}
+
+/* Les numéros d'urgence : chiffre en jaune */
+.pied-urgences a {
+  color: var(--texte-clair);
+}
+
+.pied-urgences strong {
+  margin-right: 6px;
+  font-size: 1.15rem;
+  color: var(--jaune);
+
+}
+
+.pied-urgences a:hover {
+  text-decoration: underline;
+}
+
+/* La bande d'avertissement */
+.pied-avertissement {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.pied-avertissement .avertissement {
+  max-width: none;
+  margin: 0;
+  padding: 18px 0;
+  font-size: 0.95rem;
+}
+
+/* Tablette : 2 colonnes */
+@media (max-width: 1000px) {
+  .pied-grille {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Téléphone : 1 colonne */
+@media (max-width: 640px) {
+  .pied-grille {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 40px;
+
+  }
+}
